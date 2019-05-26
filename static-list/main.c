@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define TAM 2
+#define TAM 5
 
 typedef struct 
 {
@@ -22,6 +22,9 @@ void menu();
 Lista *inicializaLista();
 void cadastraPaciente();
 void exibirListaPacientes();
+void buscarPaciente();
+void calcularIMC();
+void ordenandoPorIMC();
 void liberaLista();
 
 int main()
@@ -33,7 +36,6 @@ void menu()
 {   
     Lista *lista;
     int opcao;
-    char cond[5];
 
     lista = inicializaLista(lista);
 
@@ -57,18 +59,37 @@ void menu()
                 system("clear");
                 printf("------- Cadastro -------\n");
                 cadastraPaciente(lista);
-                printf("Cadastro Realizado!!!\n");
-                printf("------------------------\n");
                 getchar();
                 printf("Pressione qualquer tecla para voltar...");
                 getchar();
                 system("clear");
                 break;
             case 2:
+                system("clear");
+                printf("----- Busca de Pacientes -----\n");
+                buscarPaciente(lista);
+                getchar();
+                printf("Pressione qualquer tecla para voltar...");
+                getchar();
+                system("clear");
                 break;
             case 3:
+                system("clear");
+                printf("----- Calculo IMC -----\n");
+                calcularIMC(lista);
+                getchar();
+                printf("Pressione qualquer tecla para voltar...");
+                getchar();
+                system("clear");
                 break;
             case 4:
+                system("clear");
+                printf("----- Ordenação -----\n");
+                ordenandoPorIMC(lista);
+                getchar();
+                printf("Pressione qualquer tecla para voltar...");
+                getchar();
+                system("clear");
                 break;
             case 5:
                 system("clear");
@@ -129,12 +150,14 @@ void cadastraPaciente(Lista *li)
 
         printf("Peso do Paciente: ");
         scanf("%f", &li->paciente[li->qtd].peso);
+        printf("Cadastro Realizado!!!\n");
         printf("------------------------\n");
 
         li->qtd++;
     }else
     {
         printf("Lista de Paciente está Cheia!!!\n");
+        printf("------------------------\n");
     }
 }
 
@@ -152,6 +175,87 @@ void exibirListaPacientes(Lista *li)
         printf("IMC Paciente: %.2f\n", li->paciente[cont].imc);
         printf("--------------------------\n");
     }
+}
+
+void calcularIMC(Lista *li)
+{
+    int cont;
+    if(li->qtd > 0)
+    {
+        for(cont = 0; cont < li->qtd;cont++)
+        {
+            li->paciente[cont].imc = li->paciente[cont].peso / 
+                            (li->paciente[cont].altura * li->paciente[cont].altura); 
+        }
+
+        printf("Calculo realizado com sucesso!!!\n");
+        printf("-----------------------\n"); 
+    }
+    else
+    {
+        printf("Lista de pacientes está fazia!!!\n");
+        printf("-----------------------\n");
+    }
+    
+}
+
+void buscarPaciente(Lista *li)
+{
+    int cont;
+    int cod;
+
+    printf("Buscar por código: ");
+    scanf("%d", &cod);
+
+    for(cont = 0; cont < TAM; cont++)
+    {
+        if(li->paciente[cont].codigo == cod){
+
+            printf("-------- Resultado -------\n");
+            printf("Codigo Registro: %d\n", li->paciente[cont].codigo);
+            printf("Nome Paciente: %s", li->paciente[cont].nome);
+            printf("Idade Paciente: %d\n", li->paciente[cont].idade);
+            printf("Altura Paciente: %.2f\n", li->paciente[cont].altura);
+            printf("Peso Paciente: %.2f\n", li->paciente[cont].peso);
+            printf("IMC Paciente: %.2f\n", li->paciente[cont].imc);
+            printf("--------------------------\n");
+
+        }
+    }
+}
+
+void ordenandoPorIMC(Lista *li)
+{
+    int i,j,pos;
+    Paciente pacien_aux;
+
+    if(li->qtd > 0)
+    {
+        pos = 1;
+        for(i = 0; i < li->qtd; i++)
+        {
+            for(j = pos; j < li->qtd; j++)
+            {
+                if(li->paciente[i].imc <= li->paciente[j].imc)
+                {
+                    pacien_aux = li->paciente[i];
+                    li->paciente[i] = li->paciente[j];
+                    li->paciente[j] = pacien_aux;
+                }
+            }
+            pos++;
+        }
+
+        printf("Ordenação realizada com sucesso!!!\n");
+        printf("-----------------------\n");
+
+    }
+    else
+    {
+        printf("Lista de pacientes está fazia!!!\n");
+        printf("-----------------------\n");
+    }
+    
 }
 
 void liberaLista(Lista *li)
