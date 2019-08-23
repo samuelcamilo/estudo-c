@@ -56,8 +56,9 @@ Arvore *criar()
 
 void exibir(Arvore *arv)
 {
-    // printf("%c\n", arv->raiz->filho->irmao->irmao->filho->irmao->irmao->info);
-    camPreOrdem(arv->raiz);
+    //camPreOrdem(arv->raiz);
+    //camInOrdem(arv->raiz);
+    camPosOrdem(arv->raiz);
     printf("\n");
 }
 
@@ -71,3 +72,31 @@ void camPreOrdem(No *raiz)
     camPreOrdem(raiz->irmao);
 
 }
+
+void camInOrdem(No *raiz)
+{
+    if(raiz == NULL)
+        return;
+    
+    camInOrdem(raiz->filho);
+    printf("%c ", raiz->info);
+    camInOrdem(raiz->irmao);
+
+}
+
+void camPosOrdem(No *raiz)
+{
+    if(raiz == NULL)
+        return;
+
+    camPosOrdem(raiz->filho);
+    camPosOrdem(raiz->irmao);
+    printf("%c ", raiz->info);
+
+}
+
+
+
+
+
+
