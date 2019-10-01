@@ -16,6 +16,37 @@ FILE* OpenDataTxt()
         return arq;
 }
 
+void SaveDataTxt()
+{
+    int num;
+    FILE *fptr;
+    // use appropriate location if you are using MacOS or Linux
+    fptr = fopen("Base/database.txt","w");
+    if(fptr == NULL)
+    {
+        printf("Error!");   
+        exit(1);             
+    }
+    printf("Enter num: ");
+    scanf("%d",&num);
+    fprintf(fptr,"%d",num);
+    fclose(fptr);
+
+    // arq = fopen("Base/database1.txt", "w");
+
+    // if(arq == NULL)
+    // {
+    //     printf("Error in open txt!\n");
+    // }
+    // else
+    // {
+    //     printf("Aqui: %s\n", name);
+    //     fprintf(arq, "%s\n", name);
+    // }
+    
+    // fclose(arq);
+}
+
 List* InitializationList()
 {
     List* list = (List*) malloc(sizeof(List));
@@ -53,6 +84,8 @@ void InsertDataTxtToList(List* list)
         }
             
     }
+
+    fclose(arq);
 }
 
 void InsertDataInList(List* list)

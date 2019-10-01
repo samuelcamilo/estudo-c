@@ -27,7 +27,6 @@ Node* InsertTree(Node* root, char* n) {
 
 		root = malloc(sizeof(Node));
         strcpy(root->name, n);
-		//root->name = n;
 		root->left = NULL;
 		root->right = NULL;
 
@@ -48,16 +47,28 @@ void InsertDataListInTree(List* list, Tree* tree)
     while (node != NULL)
     {
         Insert(tree, node->name);
-
         node = node->next;
     }
+}
+
+void SaveData(Node* root)
+{
+	if (root != NULL) {	
+
+		SaveData(root->left);
+		SaveDataTxt(root->name);
+		SaveData(root->right);
+
+	}
 }
 
 void ShowInOrderNewLine(Node* root) {
     
 	if (root != NULL) {	
+
 		ShowInOrderNewLine(root->left);
 		printf("%s\n", root->name);
 		ShowInOrderNewLine(root->right);
+
 	}
 }

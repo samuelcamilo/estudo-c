@@ -1,4 +1,3 @@
-//#include "../Headers/tree.h"
 #include "../Source/structtree.c"
 #include "../Source/tree.c"
 
@@ -14,16 +13,16 @@ void menu()
     do
     {
         printf("----- MENU -----\n");
-        printf("(1) Carregar Dados\n");
-        printf("(2) Listar Nomes em Ordem Alfabetica\n");
-        printf("(3) Listar Nomes por Substring (Nao)\n");
-        printf("(4) Inserir Novo Nome (Memoria)\n");
-        printf("(5) Remover Nome (Memoria) (Nao)\n");
+        printf("(1) Carregar dados. OK\n");
+        printf("(2) Listagem em ordem alfabetica. OK\n");
+        printf("(3) Listagem por substring. (Nao)\n");
+        printf("(4) Inserir novo registro. OK\n");
+        printf("(5) Remover nome. (Nao)\n");
         printf("(6) - (Nao)\n");
         printf("(7) - (Nao)\n");
-        printf("(8) Salvar Conteudo em TXT (Nao)\n");
-        printf("(9) Tamanho da Lista\n");
-        printf("(0) Sair\n");
+        printf("(8) Salvar em arquivo. (Nao)\n");
+        printf("(9) Tamanho da lista. \n");
+        printf("(0) Sair. \n");
         printf("----------------\n");
         printf("Digite uma Opção: ");
         scanf("%d", &option);
@@ -61,14 +60,16 @@ void menu()
                 // system("clear");
                 break;
             case 4:
-                // system("clear");
-                // printf("----- Cadastro -----\n");
-                // AddName(list);
-                // printf("Done...\n");
-                // //getchar();
-                // printf("Pressione qualquer tecla para voltar...");
-                // getchar();
-                // system("clear");
+                system("clear");
+                printf("----- Cadastro -----\n");
+                getchar();
+                fflush(stdin);
+                InsertDataInList(list);
+                InsertDataListInTree(list, tree);
+                printf("Done...\n");
+                printf("Pressione qualquer tecla para voltar...");
+                getchar();
+                system("clear");
                 break;
             case 5:
                 // system("clear");
@@ -99,13 +100,15 @@ void menu()
                 // system("clear");
                 break;
             case 8:
-                // system("clear");
-                // printf("------- Exibindo Lista -------\n");
-                // exibirListaPacientes(lista);
-                // getchar();
-                // printf("Pressione qualquer tecla para voltar...");
-                // getchar();
-                // system("clear");
+                system("clear");
+                printf("------- Salvar em arquivo -------\n");
+                //SaveData(tree->root);
+                //SaveDataTxt();
+                printf("Done...\n");
+                getchar();
+                printf("Pressione qualquer tecla para voltar...");
+                getchar();
+                system("clear");
                 break;
             case 9:
                 // system("clear");
