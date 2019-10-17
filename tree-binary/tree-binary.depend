@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1571281310 source:c:\github\estudo-c\tree-binary\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tree.h"
+
+1571281061 c:\github\estudo-c\tree-binary\tree.h
+	<stdio.h>
+	<stdlib.h>
+
+1571281116 source:c:\github\estudo-c\tree-binary\tree.c
+	<stdio.h>
+	<stdlib.h>
+	"tree.h"
+
