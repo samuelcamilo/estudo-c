@@ -17,15 +17,19 @@ int main()
     InsertTree(tree, 5);
     InsertTree(tree, 6);
     InsertTree(tree, 9);
-
     /// Caminhamentos...
     //ShowTreePreOrder(tree->root);
-    //ShowTreeInOrder(tree->root);
+    ShowTreeInOrder(tree->root);
     //ShowTreePosOrder(tree->root);
     ///-----------------
+    RemoveBigger(tree->root);
+    RemoveSmaller(tree->root);
+    printf("\n");
+    //RemoveSmaller(tree->root);
+    //printf("Quantidade de Nodes: %d\n", CountNodeInTree(tree->root));
+    //printf("Altura: %d\n", HeightTree(tree));
 
-    printf("Quantidade de Nodes: %d\n", CountNodeInTree(tree->root));
-    printf("Altura: %d\n", HeightTree(tree));
+    ShowTreeInOrder(tree->root);
     DestroyTree(tree);
     //printf("Quantidade de Nodes: %d\n", CountNodeInTree(tree->root));
 

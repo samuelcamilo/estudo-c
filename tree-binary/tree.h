@@ -27,3 +27,5 @@ void DestroyTreeRec(Node* root);
 void DestroyTree(Tree* tree);
 int HeightTreeRec(Node* root);
 int HeightTree(Tree* tree);
+Node* RemoveBigger(Node* root);
+Node* RemoveSmaller(Node* root);

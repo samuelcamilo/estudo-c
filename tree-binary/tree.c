@@ -55,6 +55,44 @@ void InsertTree(Tree* tree, int value)
     tree->root = InsertTreeRec(tree->root, value);
 }
 
+Node* RemoveBigger(Node* root)
+{
+    if(root != NULL)
+    {
+        if(root->right != NULL)
+        {
+            root->right = RemoveBigger(root->right);
+        }
+        else
+        {
+            Node* aux = root;
+            root = root->left;
+            free(aux);
+        }
+    }
+
+    return root;
+}
+
+Node* RemoveSmaller(Node* root)
+{
+    if(root != NULL)
+    {
+        if(root->left != NULL)
+        {
+            root->left = RemoveSmaller(root->left);
+        }
+        else
+        {
+            Node* aux = root;
+            root = root->right;
+            free(aux);
+        }
+    }
+
+    return root;
+}
+
 int HeightTreeRec(Node* root)
 {
     if(root != NULL)
